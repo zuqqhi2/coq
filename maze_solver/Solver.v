@@ -1,13 +1,13 @@
 Require Import Util.
 Require Import List.
 Require Import Sumbool.
-
+(*
 Parameters maze node : Set.
 Parameter node_dec : forall (x y: node), {x = y} + {x <> y}.
 Parameters start goal : node.
 Parameters next : node -> list node.
 Definition is_next y x := In y (next x).
-
+*)
 
 Inductive path : Set :=
 | PUnit (_: node)
