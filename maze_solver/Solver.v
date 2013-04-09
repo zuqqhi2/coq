@@ -30,9 +30,11 @@ Inductive Path (x : node) : path -> Prop :=
    Path x (PCons y p)
 .
 
+(* Get next of the end of inputed path *)
 Definition expand (p: path) : list path :=
   map (fun y => PCons y p) (next (endof p)).
 
+(* Can expand Path *)
 Lemma expand1 : forall p p',
   In p' (expand p) -> exists y, is_next y (endof p) /\ p' = PCons y p.
 Proof.
@@ -42,6 +44,7 @@ intros H0 _; elim (H0 H); intros y _H; inversion _H.
 exists y; split; [apply H2 | rewrite H1; reflexivity].
 Qed.
 
+(* path(p->y) -> y::p < expand(p) *) 
 Lemma expand2 : forall y p,
   is_next y (endof p) -> In (PCons y p) (expand p).
 Proof.
