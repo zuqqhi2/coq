@@ -1,11 +1,13 @@
 Require Import List.
 Require Import Sumbool.
+
 Definition atat {A B:Type} (f: A -> B) x := f x.
 Infix "@@" := atat (at level 60).
-Definition doll {A B C: Type} (g: B -> C) (f: A -> B) (x: A) := g (f x).
 
+Definition doll {A B C: Type} (g: B -> C) (f: A -> B) (x: A) := g (f x).
 Infix "$" := doll (at level 60).
 
+(* Eliminate element in list if the element is false with f *)
 Fixpoint filter_dec {A : Type} {P Q: A -> Prop}
   (f : forall x, {P x} + {Q x}) (l:list A) : list A :=
   match l with 
